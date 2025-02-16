@@ -1,3 +1,6 @@
 aws | work
 azure | study
 python | work
+筋トレ | トレーニング
+ごみ捨て | 家庭
+試験勉強 | 勉強

@@ -9,7 +9,7 @@ def load_tasks(filename="tasks.txt"):
 
 #タスクを保存する
 def save_tasks(tasks, filename="tasks.txt"):
-    with open(filename,"w") as file:
+    with open(filename,"w",encoding='utf-8') as file:
         file.write("\n".join(tasks) + '\n')
 
 #タスクを表示する
@@ -43,9 +43,10 @@ def search_by_tag(tasks,tag):
 
 def main():
     print('=== ToDo List App ===')
-    tasks = load_tasks()
-
+    
     while True:
+        #タスク読み込みとメニューの表示
+        tasks = load_tasks()
         print("\nメニュー:")
         print("1. タスク追加")
         print("2. タスク表示")

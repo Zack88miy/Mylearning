@@ -5,10 +5,13 @@
 
 # 構成
 1.app_sample
+
 pythonをベースにタスクアプリを作っています。
 のちにGUI化を検討中
 ほかの簡単なアプリケーションもできないか検討中
+
 2.basic
+
 Pythonを基礎から確認しています
 ### 参考サイト
 https://utokyo-ipp.github.io/

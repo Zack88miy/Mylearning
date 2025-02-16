@@ -1,1 +1,3 @@
-AWS
+aws | work
+azure | study
+python | work

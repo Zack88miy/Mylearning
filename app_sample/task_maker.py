@@ -15,11 +15,31 @@ def save_tasks(tasks, filename="tasks.txt"):
 #タスクを表示する
 def display_tasks(tasks):
     if not tasks:
-        print("現在のタスクはありませｎ")
+        print("現在のタスクはありません")
     else:
         print('\n現在のタスク:')
         for i, task in enumerate(tasks,start=1):
             print(f'{i}.{task}')
+
+#タスクを追加する
+def add_tasks(tasks):
+    new_task = input('新しいタスクを入力: ')
+    tag = input('タグを入力 (ex. work study): ')
+    # タスクとタグを保存
+    task_entry = f"{new_task} | {tag}"  
+    tasks.append(task_entry)
+    save_tasks(tasks)
+    print('タスクを追加しました')
+
+#追加機能:タグ検索(実装途中)
+def search_by_tag(tasks,tag):
+    found = [task for task in tasks if f"| {tag}" in task]
+    if found:
+        print(f"Tag '{tag}' のタスク:")
+        for i, task in enumerate(found, 1):
+            print(f"{i}. {task}")
+    else:
+        print(f"Tag '{tag}' に一致するタスクはありません。")
 
 def main():
     print('=== ToDo List App ===')
@@ -36,10 +56,7 @@ def main():
 
         match choice:
             case "1":
-                new_task = input('新しいタスクを入力: ')
-                tasks.append(new_task)
-                save_tasks(tasks)
-                print('タスクを追加しました')
+                tasks = add_tasks(tasks)
             case "2":
                 display_tasks(tasks)
             case "3":

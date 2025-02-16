@@ -1,21 +1,24 @@
+#タスクを読み込む
 def load_tasks(filename="tasks.txt"):
     try:
-        with open(filename,"r") as file:
+        with open(filename, "r", encoding='utf-8') as file:
             tasks = file.read().splitlines()
     except FileNotFoundError:
         tasks = []
     return tasks
 
+#タスクを保存する
 def save_tasks(tasks, filename="tasks.txt"):
     with open(filename,"w") as file:
-        file.write("\n".join(tasks))
+        file.write("\n".join(tasks) + '\n')
 
+#タスクを表示する
 def display_tasks(tasks):
     if not tasks:
-        print("現在のタスクはないです")
+        print("現在のタスクはありませｎ")
     else:
         print('\n現在のタスク:')
-        for i, task in enumerate(tasks,1):
+        for i, task in enumerate(tasks,start=1):
             print(f'{i}.{task}')
 
 def main():

@@ -1,3 +1,5 @@
+from datetime import datetime,timedelta
+
 #タスクを読み込む
 def load_tasks(filename="tasks.txt"):
     try:
@@ -31,7 +33,7 @@ def add_tasks(tasks):
     save_tasks(tasks)
     print('タスクを追加しました')
 
-#追加機能:タグ検索(実装途中)
+#タグ検索
 def search_by_tag(tasks,tag):
     found = [task for task in tasks if f"| {tag}" in task]
     if found:
@@ -40,6 +42,21 @@ def search_by_tag(tasks,tag):
             print(f"{i}. {task}")
     else:
         print(f"Tag '{tag}' に一致するタスクはありません。")
+
+#締め切りの報告(検討中)
+#登録するデータ形式を変更する予定
+#strptime():文字列を日付形式に変更
+def check_due_tasks(tasks):
+    today = datetime.today().date()
+    for task in tasks:
+        parts = task.split("|")
+        if len(parts) > 1:
+            try:
+                due_date = datetime.strptime(parts[1],"%Y-%m-%d").date()
+                if due_date <= today + timedelta(days=1):
+                    print(f'締め切り間近: {parts[0]} (締め切り: {parts[1]})')
+            except ValueError:
+                pass
 
 def main():
     print('=== ToDo List App ===')
@@ -51,9 +68,10 @@ def main():
         print("1. タスク追加")
         print("2. タスク表示")
         print("3. タスク削除")
-        print("4. アプリ終了")
+        print("4. タスク検索")
+        print("5. アプリ終了")
 
-        choice = input("Pleese Choice (1-4): ")
+        choice = input("Pleese Choice (1-5): ")
 
         match choice:
             case "1":
@@ -71,8 +89,11 @@ def main():
                     else:
                         print("無効です")
                 except ValueError:
-                    print('番号を入力してください')
+                    print('番号を入力してください : ')
             case "4":
+                tag = input('検索するタグを入力してください')
+                search_by_tag(tasks,tag)
+            case "5":
                 print('アプリを終了します')
                 break
             case _:

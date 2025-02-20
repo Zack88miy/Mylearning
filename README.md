@@ -15,3 +15,9 @@ pythonをベースにタスクアプリを作っています。
 Pythonを基礎から確認しています
 ### 参考サイト
 https://utokyo-ipp.github.io/
+
+3.practice
+
+Udemyで学習したサンプルコードを書いています。
+### 参考サイト
+後ほど掲載
